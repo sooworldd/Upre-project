@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'KoddiUDOnGothic-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/KoddiUDOnGothic-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SUIT-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.item_datail {
+	margin-top:100px;
+	display: flex;
+	justify-content: center;
+}
+
+.detail_left {
+	width: 50%;
+	float: left;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.tumblr_img {
+	width: 200px;
+	display: block;
+}
+
+.detail_right {
+	width: 50%;
+	margin-top: 20px;
+}
+
+.title {
+	font-family: 'SUIT-Regular';
+	font-size: 28px;
+	font-weight: bold;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.price {
+	font-family: 'KoddiUDOnGothic-Regular';
+	font-size: 22px;
+	font-weight: bold;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+table {
+	margin: auto;
+	float: left;
+}
+
+table td {
+	vertical-align: top;
+	font-weight: bold;
+}
+
+.table_name {
+	font-family: 'KoddiUDOnGothic-Regular';
+	text-align: left;
+	padding: 5px 15px 15px 15px;
+}
+
+.table_content {
+	font-family: 'KoddiUDOnGothic-Regular';
+	width: 400px;
+	padding: 5px 15px 15px 15px;
+}
+/* 구매 수량 */
+.minus_btn {
+	font-family: 'KoddiUDOnGothic-Regular';
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	border: none;
+	font-weight: bold;
+	font-size: 15.5px;
+	cursor: pointer;
+}
+
+.plus_btn {
+	font-family: 'KoddiUDOnGothic-Regular';
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	border: none;
+	font-weight: bold;
+	font-size: 15.5px;
+	cursor: pointer;
+}
+
+.quantity {
+	font-family: 'KoddiUDOnGothic-Regular';
+	width: 25px;
+	height: 25px;
+	border: none;
+	text-align: center;
+	font-weight: bold;
+	font-size: 15.5px;
+}
+
+.buy_btn {
+	font-family: 'KoddiUDOnGothic-Regular';
+	margin: 15px;
+	border: none;
+	width: 80px;
+	height: 40px;
+	font-weight: bold;
+	font-size: 16px;
+	background: #222;
+	color: white;
+	cursor: pointer;
+}
+
+input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.custom-number-input input:focus {
+	outline: none !important;
+}
+
+.custom-number-input button:focus {
+	outline: none !important;
+}
+
+.detail_page{
+	margin-bottom:100px;
+}
+
+.information{
+	margin-top:200px;
+	font-family: 'GangwonEdu_OTFBoldA';
+	font-size: 24px;
+	line-height:36px;
+}
+
+.content_title{
+	margin-top:150px;
+	font-family: 'SUIT-Regular';
+	font-size: 48px;
+	font-weight: bold;
+}
+
+.content_a{
+	font-family: SUIT-Regular;
+	font-weight: bold;
+	font-size:20px;
+	line-height:28px;
+}
+
+.notice{
+	margin-left:100px;
+}
+
+ul{
+	line-height:30px;	
+}
+
+li {
+  list-style-type: none;
+}

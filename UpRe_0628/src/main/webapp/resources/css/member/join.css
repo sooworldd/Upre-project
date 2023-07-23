@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+/* 중복아이디 존재하지 않는경우 */
+.id_input_re_1 {
+	color: green;
+	display: none;
+}
+/* 중복아이디 존재하는 경우 */
+.id_input_re_2 {
+	color: red;
+	display: none;
+}
+.correct{
+    color : green;
+}
+.incorrect{
+    color : red;
+}
+
+
+/* 유효성 검사 문구 */
+ 
+.final_id_ck1{
+	color: red;
+    display: none;
+}
+.final_id_ck2{
+	color: red;
+    display: none;
+}
+.final_pw_ck1{
+	color: red;
+    display: none;
+}
+.final_pw_ck2{
+	color: red;
+    display: none;
+}
+.final_pw_ck3{
+	color: red;
+    display: none;
+}
+.final_pwck_ck{
+	color: red;
+    display: none;
+}
+.final_name_ck{
+	color: red;
+    display: none;
+}
+.final_nickname_ck{
+	color: red;
+    display: none;
+}
+.final_birth_ck{
+	color: red;
+    display: none;
+}
+.final_phone_ck{
+	color: red;
+    display: none;
+}
+.final_mail_ck1{
+	color: red;
+    display: none;
+}
+.final_mail_ck2{
+	color: red;
+    display: none;
+}
+.final_mailCheck_ck{
+	color: red;
+    display: none;
+}
+.final_addr_ck{
+	color: red;
+    display: none;
+}

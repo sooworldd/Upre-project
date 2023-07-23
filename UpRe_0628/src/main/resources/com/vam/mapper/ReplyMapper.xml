@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vam.mapper.ReplyMapper">
+
+
+
+ 
+ <resultMap id="replyResultMap" type="com.vam.model.ReplyVO">
+    <id property="id" column="ID"/>
+    <result property="board_no" column="BOARD_NO"/>
+    <result property="rno" column="RNO"/>
+    <result property="content" column="CONTENT"/>
+    <result property="writer" column="WRITER"/>
+    <result property="regdate" column="REGDATE"/>
+  </resultMap>
+
+
+<!-- 댓글불러오기 -->
+<select id="readReply" parameterType="int" resultMap="replyResultMap">
+    SELECT ID, BOARD_NO, RNO, CONTENT, WRITER, REGDATE
+    FROM FREE_REPLY
+    WHERE BOARD_NO = #{board_no}
+    ORDER BY RNO ASC
+  </select>
+<!-- 대댓글불러오기 -->
+  <select id="readRreply" parameterType="int" resultType="com.vam.model.RreplyVO">
+    SELECT ID, BOARD_NO, RNO, RRNO, CONTENT, WRITER, REGDATE
+    FROM FREE_RREPLY
+    WHERE BOARD_NO = #{board_no}
+    ORDER BY RRNO ASC
+  </select>
+  
+  <!-- 댓글 수 세기 -->
+<select id="replyCount" parameterType="int" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM FREE_REPLY WHERE BOARD_NO = #{board_no}
+  </select>
+  <!-- 대댓글 수 세기 -->
+  <select id="rreplyCount" parameterType="int" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM FREE_RREPLY WHERE BOARD_NO = #{board_no}
+  </select>
+
+<!-- 댓글 등록 -->
+<insert id="writeReply" parameterType="com.vam.model.ReplyVO">
+    INSERT INTO free_REPLY (ID, BOARD_NO, RNO, CONTENT, WRITER, REGDATE)
+    VALUES (#{id}, #{board_no}, free_reply_seq.nextval, #{content}, #{writer}, sysdate)
+  </insert>
+  
+  <!-- 대댓글 등록 -->
+<insert id="writeRreply" parameterType="com.vam.model.RreplyVO">
+    INSERT INTO free_RREPLY (ID, BOARD_NO, RNO, RRNO, CONTENT, WRITER, REGDATE)
+    VALUES (#{id}, #{board_no}, #{rno},free_rreply_seq.nextval, #{content}, #{writer}, sysdate)
+  </insert>
+  
+<!-- 댓글 수정 -->
+  <update id="updateReply" parameterType="com.vam.model.ReplyVO">
+    UPDATE free_REPLY
+    SET CONTENT = #{content}
+    WHERE RNO = #{rno}
+  </update>
+  
+  <!-- 대댓글 수정 -->
+  <update id="updateRreply" parameterType="com.vam.model.RreplyVO">
+    UPDATE free_RREPLY
+    SET CONTENT = #{content}
+    WHERE RRNO = #{rrno}
+  </update>
+  
+  <delete id="deleteReply" parameterType="int">
+    DELETE FROM FREE_REPLY
+    WHERE RNO = #{rno}
+  </delete>
+  
+  <delete id="deleteRreply"  parameterType="int">
+    DELETE FROM FREE_RREPLY
+    WHERE RRNO = #{rrno}
+  </delete>
+  
+  
+  
+
+<!-- 
+
+
+<select id="readRreply" parameterType="int" resultMap="com.vam.model.RreplyVO">
+    SELECT ID, BOARD_NO, RNO, RRNO, CONTENT, WRITER, REGDATE
+    FROM FREE_RREPLY
+    WHERE BOARD_NO = #{board_no}
+    ORDER BY RRNO ASC
+  </select>
+
+  
+
+  
+
+  
+
+  <select id="selectReply" parameterType="int" resultMap="replyResultMap">
+    SELECT ID, NICKNAME, BOARD_NO, RNO, CONTENT, WRITER, REGDATE
+    FROM MVE_REPLY
+    WHERE RNO = #{rno}
+  </select>
+-->
+</mapper>

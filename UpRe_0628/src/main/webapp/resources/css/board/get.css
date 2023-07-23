@@ -1,0 +1,234 @@
+@font-face {
+	font-family: 'GangwonEdu_OTFBoldA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.head_title {
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.table_wrap {
+	margin-top: 50px;
+}
+
+.post_table {
+	border-collapse: collapse;
+}
+
+.btn {
+	padding: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 16px;
+	border-radius: 8px;
+}
+
+.btn:hover {
+	background: black;
+	color: white;
+}
+
+th {
+	border: 1px solid gray;
+	text-align: center;
+	padding: 4px 10px 4px 10px;
+	font-size: 17px;
+	font-family: 'GangwonEdu_OTFBoldA';
+	color: gray;
+	text-align: center;
+	vertical-align: middle;
+}
+
+td {
+	border: 1px solid gray;
+	text-align: center;
+	padding: 4px 10px 4px 10px;
+	font-size: 18px;
+	font-family: 'GangwonEdu_OTFBoldA';
+	color: gray;
+	vertical-align: middle;
+}
+
+.content_wrap {
+	margin-top: 22px;
+	font-size: 18px;
+	text-align: left;
+	font-family: 'GangwonEdu_OTFBoldA';
+	width: 600px;
+	height: 300px;
+	border: none;
+	resize: none;
+	font-size: 18px;
+}
+
+.content_wrap:focus {
+	outline: none;
+}
+
+.content_area {
+	margin-top: 22px;
+	width: 600px;
+}
+
+.post_content {
+	padding: 10px;
+}
+
+hr {
+	border-style: solid;
+	border-width: 2px;
+	color: #e6e6e6;
+}
+
+.edit-row {
+	display: none;
+}
+
+.re_all {
+	width: 750px;
+}
+
+.re_table {
+	border: none;
+}
+
+.nickname-cell {
+	border: none;
+	width: 100px;
+	font-size: 15px;
+	text-align: left;
+	line-height: 30px;
+}
+
+.content-cell {
+	border: none;
+	text-align: left;
+	width: 400px;
+	height: auto;
+}
+
+.date_cell {
+	border: none;
+	width: 100px;
+}
+
+.edit-cell {
+	border: none;
+	width: 50px;
+	text-align: left;
+}
+
+#re_table_btn {
+	font-family: 'GangwonEdu_OTFBoldA';
+	border: none;
+	background: white;
+	color: black;
+	font-weight: bold;
+	font-size: 17px;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 8px;
+	vertical-align: middle;
+}
+
+#re_table_btn:hover {
+	color: white;
+	background: black;
+}
+
+.re_input_table {
+	width: 750px;
+}
+
+.re_writer {
+	text-align: left;
+	border: none;
+}
+
+.re_content {
+	border: 2px solid lightgray;
+}
+
+.en_nickname {
+	font-family: 'GangwonEdu_OTFBoldA';
+	font-size: 15px;
+	color: gray;
+	border: none;
+}
+
+.en_nickname:focus {
+	outline: none;
+}
+
+.en_content {
+	border: none;
+	width: 640px;
+	height: 80px;
+	padding: 5px;
+	font-family: 'GangwonEdu_OTFBoldA';
+	resize: none;
+	font-size: 15px;
+	color: gray;
+}
+
+.en_content:focus {
+	outline: none;
+}
+
+.input_btn {
+	font-family: 'GangwonEdu_OTFBoldA';
+	border: none;
+	background: white;
+	color: black;
+	font-weight: bold;
+	font-size: 17px;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 8px;
+	vertical-align: middle;
+}
+
+.input_btn:hover {
+	color: white;
+	background: black;
+}
+
+.re_input_btn {
+	border: none;
+}
+
+.rre_content {
+	font-family: 'GangwonEdu_OTFBoldA';
+	resize: none;
+	font-size: 15px;
+	color: gray;
+	border: none;
+	width: 360px;
+}
+
+.rre_content:focus {
+	outline: none;
+}
+
+.rre_content2 {
+	font-family: 'GangwonEdu_OTFBoldA';
+	resize: none;
+	font-size: 15px;
+	color: gray;
+	border: none;
+	width: 360px;
+}
+
+.rre_content2:focus {
+	outline: none;
+}
+
+.re_option_btn {
+	background: white;
+	border: none;
+	cursor: pointer;
+}

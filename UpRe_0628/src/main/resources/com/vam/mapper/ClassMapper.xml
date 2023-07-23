@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.ClassMapper">
+  
+  <!-- class검색 조건문 -->
+   <sql id="criteria">
+    <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+        <foreach collection="typeArr" item="type">
+            <trim prefix="OR">
+                <choose>
+                    <when test="type == 'T'.toString()">
+                        class_name like '%'||#{keyword}||'%' 
+                    </when>
+                    <when test="type == 'A'.toString()">
+                        class_content like '%'||#{keyword}||'%' 
+                    </when>
+                </choose>
+            </trim>
+        </foreach>
+    </trim>
+</sql>
+    
+   <!-- 클래스 목록 (페이징) -->
+<select id="getClassPaging" resultType="com.vam.model.ClassVO">
+    <![CDATA[
+    SELECT class_id, class_img, class_name, class_content, class_peopleno, reg_date, update_date, view_cnt
+    FROM (
+        SELECT /*+INDEX_DESC(class_table pk_class) */ rownum AS rn, class_id, class_img, class_name, class_content, class_peopleno, reg_date, update_date, view_cnt
+        FROM class_table
+        WHERE rownum <= #{pageNum} * #{amount}
+    ]]>
+    <if test="keyword != null">
+        <include refid="criteria"></include>
+    </if>
+    <![CDATA[
+        ORDER BY class_id DESC
+    )
+    WHERE rn > (#{pageNum} - 1) * #{amount}
+    ]]>
+</select>
+
+ <!-- 게시물 목록 -->
+
+    
+ <select id="getList" resultType="com.vam.model.ClassVO">
+  SELECT *
+  FROM class_table
+  ORDER BY class_id DESC
+</select>
+
+
+
+
+  <!-- 게시물 총 개숫 -->
+    <select id="getTotal" resultType="int">
+    
+        select count(*) from class_table
+        
+        <if test="keyword != null">
+        
+            where class_id > 0 <include refid="criteria"></include>
+        
+        </if>
+    
+    </select> 
+
+    
+    
+    
+     <!-- class 등록 -->
+<insert id="insert">
+    INSERT INTO class_table(class_id, class_img, class_name, class_content, class_peopleno)
+    VALUES (class_id_SEQ.NEXTVAL, #{class_img}, #{class_name}, #{class_content}, #{class_peopleno})
+</insert>
+
+
+
+ <!-- class 수정 -->
+ <update id="update" parameterType="com.vam.model.ClassVO">
+    UPDATE class_table
+    SET class_name = #{class_name},
+		class_img = #{class_img},    
+        class_content = #{class_content},
+        class_peopleno = #{class_peopleno},
+        update_date = sysdate
+    WHERE class_id = #{class_id}
+</update>
+ 
+ <!-- class 삭제 -->
+<delete id="delete">
+    DELETE FROM class_table
+    WHERE class_id = #{class_id}
+</delete>
+
+ <!-- class 조회 -->
+  
+  <select id="getPage" resultType="com.vam.model.ClassVO">
+  	select * from class_table where
+		class_id=#{class_id}
+    
+</select>
+
+   <!-- 조회수 증가 -->
+    <update id="updateViewCnt">
+    update class_table set view_cnt = view_cnt + 1 where class_id  = #{class_id}
+    
+    
+    </update>
+    
+  
+  </mapper>
+  

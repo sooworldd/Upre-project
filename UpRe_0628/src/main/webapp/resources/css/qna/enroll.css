@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'GangwonEdu_OTFBoldA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.alldiv {
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.input_wrap {
+	margin: 30px 0 30px 0;
+	padding: 5px 20px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+label {
+	display: block;
+	margin: 10px 0;
+	font-size: 20px;
+}
+
+input {
+	padding: 5px;
+	font-size: 17px;
+}
+
+textarea {
+	width: 800px;
+	height: 200px;
+	font-size: 15px;
+	padding: 10px;
+}
+
+.btn {
+	text-decoration: none;
+	margin-right: 50px;
+	width: 120px;
+	height: 120px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	color: black;
+	border-radius: 50%;
+	outline: 2px solid #fff;
+	transition-property: outline-offset, outline-color, background-color;
+	transition-duration: .3s;
+	cursor: pointer;
+}
+
+@keyframes shake {
+	10% { transform: rotate(15deg); }
+	20% { transform: rotate(-15deg); }
+	30% { transform: rotate(15deg); }
+	40% { transform: rotate(-15deg); }
+}
+
+.btn:hover {
+	background-color: white;
+	outline-offset: 4px;
+	animation: shake .5s;
+	background-color: white;
+	outline-color: white;
+}
+
+	.btn_wrap{
+		padding-left : 80px;
+		margin-top : 50px;
+		text-decoration: none;
+	}
+
+.input_wrap textarea {
+	font-size: 20px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.label_css {
+	font-size: 25px;
+}
+
+.title_css {
+	font-family: 'GangwonEdu_OTFBoldA';
+	font-size: 20px;
+	width: 800px;
+	height: 30px;
+	border-radius: 10px;
+}
+
+.textarea_css {
+	border-radius: 10px;
+}
+
+.button-selected {
+	background-color: gray;
+}
+
+.input_wrap1 {
+	display: none;
+}
+.category-button {
+    width:150px;
+    color: black;
+    font-size: 18px;
+    padding: 10px 15px;
+    background-color: silver;
+    border: 1px solid #ddd;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-family: 'GangwonEdu_OTFBoldA';
+  }
+
+  .button-selected {
+    background-color: gray;
+  }
+
+  .category-select {
+    display: none;
+    padding: 5px;
+    margin-top: 10px;
+    width: 450px; /* 셀렉트 박스의 폭을 200px로 지정 */
+	height: 30px; /* 셀렉트 박스의 높이를 30px로 지정 */
+  }
+  
+  .btn_list {
+  position: relative;
+}
+
+.btn_list::after {
+  content: "목록으로";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #FFF;
+  padding: 5px;
+  font-size: 14px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.btn_list:hover::after {
+  opacity: 1;
+}
+
+.btn_submit {
+  position: relative;
+}
+
+.btn_submit::after {
+  content: "작성완료";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #FFF;
+  padding: 5px;
+  font-size: 14px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.btn_submit:hover::after {
+  opacity: 1;
+}

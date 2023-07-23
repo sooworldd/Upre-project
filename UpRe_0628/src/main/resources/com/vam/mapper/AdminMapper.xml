@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vam.mapper.AdminMapper">
+<!-- =======================회원============================ -->
+<!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            id like '%'||#{keyword}||'%' 
+                        </when>
+                         <when test="type == 'N'.toString()">
+                            name like '%'||#{keyword}||'%' 
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    
+    </sql>
+<!-- 회원목록 -->
+ <select id="memberList" resultType="com.vam.model.MemberVO">
+    SELECT id, name, nickname, gender, birth, phone, mail, addr1, addr2, addr3, joindate
+    FROM member
+    WHERE lev IS NULL
+    ORDER BY joindate DESC
+  </select>
+  <!-- 회원 목록(페이징) -->
+<select id="memberListPaging" resultType="com.vam.model.MemberVO">
+    <![CDATA[
+        select * from (
+            select /*+INDEX_DESC(member idx_joindate) */ rownum as rn, id, name, nickname, gender, birth, phone, mail, addr1, addr2, addr3, joindate
+            from member
+            where rownum <= #{pageNum} * #{amount}
+            and lev is null
+    ]]>
+    <if test="keyword != null">
+        <include refid="criteria"></include> 
+    </if>
+    <![CDATA[
+            order by joindate desc
+        ) where rn > (#{pageNum} -1) * #{amount}
+    ]]>
+</select>
+
+<!-- 게시물 총 개숫 -->
+    <select id="memberTotal" resultType="Integer">
+    
+        select count(*) from member
+        
+        <if test="keyword != null">
+        
+            where id is NOT NULL <include refid="criteria"></include>
+        
+        </if>
+    
+    </select>    
+
+  
+  <!-- 회원상세 -->
+  <select id="memberDetail" parameterType="string" resultType="com.vam.model.MemberVO">
+    SELECT id, name, nickname, gender, birth, phone, mail, addr1, addr2, addr3, joindate 
+    FROM member 
+    WHERE id = #{id}
+</select>
+<!-- 회원수정 -->
+ <update id="memberUpdate">
+  UPDATE member
+  SET
+    name = #{name},
+    nickname = #{nickname},
+    gender = #{gender},
+    birth = #{birth},
+    phone = #{phone},
+    mail = #{mail},
+    addr1 = #{addr1},
+    addr2 = #{addr2},
+    addr3 = #{addr3}
+  WHERE id = #{id}
+</update>
+<!-- 회원삭제 -->
+<delete id="memberDelete">
+ DELETE member
+ WHERE id = #{id}
+</delete>
+ <!-- =======================상품============================ -->
+ 
+ <!-- 상품 리스트 -->
+ <select id="goodsList" resultType="com.vam.model.GoodsVO">
+    SELECT *
+	FROM goods
+  </select>
+  
+<!-- 상품 상세 -->
+<select id="goodsDetail" resultType="com.vam.model.GoodsVO">
+	SELECT name, price, img, regdate, updatedate FROM goods WHERE name = #{name}
+</select>
+
+<!-- 상품 구매 페이지 -->
+<select id="tumblr" resultType="com.vam.model.GoodsVO">
+	SELECT name, price, img FROM goods
+</select>
+
+
+<!-- 상품 수정 -->
+<update id="goodsUpdate">
+	UPDATE goods SET price = #{price},img = #{img},updatedate = sysdate WHERE name = #{name}
+</update>
+ 
+<insert id="orderInfo" >
+	insert into tumbler_order (id, order_no,orderdate,customer,contact,phone,addr1,addr2,addr3,memo,select_box,product_name,quantity,price,shipping_price)
+	values (#{id},order_seq.NEXTVAL,sysdate,#{customer},#{contact},#{phone},#{addr1},#{addr2},#{addr3},#{memo},#{select_box},#{product_name},#{quantity},#{price},#{shipping_price})
+</insert>
+
+<select id="orderDetail" resultType="com.vam.model.OrderVO">
+	select * tumbler_order where id = #{id}
+</select>
+
+
+  
+</mapper>
